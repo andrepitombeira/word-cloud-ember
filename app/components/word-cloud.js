@@ -10,7 +10,7 @@ export default Ember.Component.extend({
     generateWordCloud: function() {
         var fill = d3.scale.category20(),
             words = this.get('data').map(function(topic) {
-                return {text: topic.label, size: topic.sentimentScore};
+                return {text: topic.label, size: topic.sentimentScore, sentiment:topic.sentimentScore};
             });
 
         d3.layout.cloud().size([600, 600])
@@ -33,7 +33,17 @@ export default Ember.Component.extend({
                 .enter().append("text")
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Impact")
-                .style("fill", function(d, i) { return fill(i); })
+                .style("fill", function(d) {
+                    debugger;
+                    if (d.sentiment > 60) {
+                        return "green";
+                    } else if (d.sentiment < 40) {
+                        return "red";
+                    } else {
+                        return "gray";
+                    }
+//                    return fill(i);
+                })
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
