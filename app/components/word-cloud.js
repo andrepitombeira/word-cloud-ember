@@ -34,7 +34,6 @@ export default Ember.Component.extend({
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Impact")
                 .style("fill", function(d) {
-                    debugger;
                     if (d.sentiment > 60) {
                         return "green";
                     } else if (d.sentiment < 40) {
@@ -42,7 +41,6 @@ export default Ember.Component.extend({
                     } else {
                         return "gray";
                     }
-//                    return fill(i);
                 })
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
