@@ -1,4 +1,4 @@
-/* global d3:true */
+/* global d3:true*/ /* global _:true */
 import Ember from 'ember';
 
 export default Ember.Component.extend({
@@ -8,8 +8,10 @@ export default Ember.Component.extend({
     },
 
     generateWordCloud: function() {
-        var words = this.get('data').map(function(topic) {
-                return {text: topic.label, size: topic.sentimentScore, sentiment:topic.sentimentScore};
+        var maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
+            wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]),
+            words = this.get('data').map(function(topic) {
+                return {text: topic.label, size: wordScale(topic.sentimentScore), sentiment:topic.sentimentScore};
             });
 
         d3.layout.cloud()
@@ -18,7 +20,7 @@ export default Ember.Component.extend({
             .padding(2)
             .rotate(function() { return ~~(Math.random() * 2) * 90; })
             .font("Impact")
-            .fontSize(function(d) { return Math.max(8, Math.min(d.size, 24)); })
+            .fontSize(function(d) { return d.size; })
             .on("end", draw)
             .start();
 
