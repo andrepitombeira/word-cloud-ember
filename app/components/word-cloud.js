@@ -13,14 +13,25 @@ export default Ember.Component.extend({
                 return {text: topic.label, size: topic.sentimentScore, sentiment:topic.sentimentScore};
             });
 
-        d3.layout.cloud().size([600, 600])
+        d3.layout.cloud()
+            .size([600, 600])
             .words(words)
-            .padding(5)
+            .padding(2)
             .rotate(function() { return ~~(Math.random() * 2) * 90; })
             .font("Impact")
             .fontSize(function(d) { return Math.max(8, Math.min(d.size, 24)); })
             .on("end", draw)
             .start();
+
+        function getColorBySentiment(sentiment) {
+            if (sentiment > 60) {
+                return "green";
+            } else if (sentiment < 40) {
+                return "red";
+            } else {
+                return "gray";
+            }
+        }
 
         function draw(words) {
             d3.select("body").append("svg")
@@ -33,15 +44,7 @@ export default Ember.Component.extend({
                 .enter().append("text")
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Impact")
-                .style("fill", function(d) {
-                    if (d.sentiment > 60) {
-                        return "green";
-                    } else if (d.sentiment < 40) {
-                        return "red";
-                    } else {
-                        return "gray";
-                    }
-                })
+                .style("fill", function(d) { return getColorBySentiment(d.sentiment); })
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
