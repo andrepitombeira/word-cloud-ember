@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
     generateTopics: function() {
-        var topics = this.get("content.content");
+        var topics = this.get('content.content');
 
         topics = _.map(topics, function(topic) {
             return Ember.Object.create(topic.get('data'));
@@ -14,9 +14,9 @@ export default Ember.ArrayController.extend({
 
     topics: function() {
         var topics = this.generateTopics().map(function(topic) {
-            return _.pick(topic, ["label","sentimentScore"]);
+            return _.pick(topic, ['label', 'sentimentScore', 'volume', 'sentiment']);
         });
 
         return topics;
-    }.property('@each.label', '@each.sentimentScore')
+    }.property('@each.label', '@each.sentimentScore', '@each.volume', '@each.sentiment')
 });
