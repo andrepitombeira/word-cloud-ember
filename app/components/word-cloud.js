@@ -23,16 +23,6 @@ export default Ember.Component.extend({
             .on("end", draw)
             .start();
 
-        function getColorBySentiment(sentiment) {
-            if (sentiment > 60) {
-                return "green";
-            } else if (sentiment < 40) {
-                return "red";
-            } else {
-                return "gray";
-            }
-        }
-
         function draw(words) {
             d3.select("body").append("svg")
                 .attr("width", 600)
@@ -53,6 +43,16 @@ export default Ember.Component.extend({
                 .on("click", function(d) {
                     console.log(d.text);
                 });
+        }
+
+        function getColorBySentiment(sentiment) {
+            if (sentiment > 60) {
+                return "green";
+            } else if (sentiment < 40) {
+                return "red";
+            } else {
+                return "gray";
+            }
         }
     }
 });
