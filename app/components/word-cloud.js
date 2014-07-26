@@ -8,8 +8,7 @@ export default Ember.Component.extend({
     },
 
     generateWordCloud: function() {
-        var fill = d3.scale.category20(),
-            words = this.get('data').map(function(topic) {
+        var words = this.get('data').map(function(topic) {
                 return {text: topic.label, size: topic.sentimentScore, sentiment:topic.sentimentScore};
             });
 
