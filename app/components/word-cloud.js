@@ -39,7 +39,7 @@ export default Ember.Component.extend({
                 .enter().append("text")
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Impact")
-                .style("fill", function(d) { return getColorBySentiment(d.sentiment); })
+                .style("fill", function(d) { return getColorBySentiment(d.sentimentScore); })
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
