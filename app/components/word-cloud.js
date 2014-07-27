@@ -29,7 +29,7 @@ export default Ember.Component.extend({
             .start();
 
         function draw(words) {
-            d3.select("body").append("svg")
+            d3.select("body .col-md-8").append("svg")
                 .attr("width", 600)
                 .attr("height", 600)
                 .append("g")
