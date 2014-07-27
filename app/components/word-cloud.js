@@ -8,7 +8,8 @@ export default Ember.Component.extend({
     },
 
     generateWordCloud: function() {
-        var maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
+        var that = this,
+            maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
             wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]),
             data = this.get('data').map(function(topic) {
                 return { text: topic.label,
@@ -46,7 +47,7 @@ export default Ember.Component.extend({
                 })
                 .text(function(d) { return d.text; })
                 .on("click", function(d) {
-                    console.log(d.text);
+                    handleClick(d);
                 });
         }
 
@@ -58,6 +59,10 @@ export default Ember.Component.extend({
             } else {
                 return "gray";
             }
+        }
+
+        function handleClick(topic) {
+            that.get('topicsController').send('setTopic', topic);
         }
     }
 });
