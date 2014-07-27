@@ -1,3 +1,7 @@
+.borderless tbody tr td, .borderless thead tr th {
+    border: none;
+}
+
 td.negative {
     color: red;
 }
