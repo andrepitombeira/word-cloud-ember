@@ -2,6 +2,12 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+    selectedTopic: null,
+
+    topic: function() {
+        return this.get('selectedTopic');
+    }.property('selectedTopic.text'),
+
     generateTopics: function() {
         var topics = this.get('content.content');
 
@@ -18,5 +24,11 @@ export default Ember.ArrayController.extend({
         });
 
         return topics;
-    }.property('@each.label', '@each.sentimentScore', '@each.volume', '@each.sentiment')
+    }.property('@each.label', '@each.sentimentScore', '@each.volume', '@each.sentiment'),
+
+    actions: {
+        setTopic: function(topic) {
+            this.set('selectedTopic', topic);
+        }
+    }
 });
