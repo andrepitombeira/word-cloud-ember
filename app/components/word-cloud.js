@@ -10,13 +10,13 @@ export default Ember.Component.extend({
     generateWordCloud: function() {
         var maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
             wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]),
-            words = this.get('data').map(function(topic) {
+            data = this.get('data').map(function(topic) {
                 return {text: topic.label, size: wordScale(topic.sentimentScore), sentiment:topic.sentimentScore};
             });
 
         d3.layout.cloud()
             .size([600, 600])
-            .words(words)
+            .words(data)
             .padding(2)
             .rotate(function() { return ~~(Math.random() * 2) * 90; })
             .font("Impact")
