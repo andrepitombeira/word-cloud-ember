@@ -11,7 +11,11 @@ export default Ember.Component.extend({
         var maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
             wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]),
             data = this.get('data').map(function(topic) {
-                return {text: topic.label, size: wordScale(topic.sentimentScore), sentiment:topic.sentimentScore};
+                return { text: topic.label,
+                    size: wordScale(topic.sentimentScore),
+                    sentimentScore: topic.sentimentScore,
+                    volume: topic.volume,
+                    sentiment: topic.sentiment };
             });
 
         d3.layout.cloud()
