@@ -1,1 +1,22 @@
-{{yield}}
+<table class="table details">
+    <tr>
+        <td>Information on topic:</td>
+        <td>{{topic.text}}</td>
+    </tr>
+    <tr>
+        <td>Total mentions:</td>
+        <td>{{topic.volume}}</td>
+    </tr>
+    <tr>
+        <td>Positive mentions:</td>
+        <td class="positive">{{topic.sentiment.positive}}</td>
+    </tr>
+    <tr>
+        <td>Neutral mentions:</td>
+        <td>{{topic.sentiment.neutral}}</td>
+    </tr>
+    <tr>
+        <td>Negative mentions:</td>
+        <td class="negative">{{topic.sentiment.negative}}</td>
+    </tr>
+</table>
