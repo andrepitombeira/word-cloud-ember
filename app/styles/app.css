@@ -6396,3 +6396,17 @@ textarea:focus {
 .panel-default > .panel-heading {
     background-color: #464545;
 }
+
+td.negative {
+    color: red;
+}
+
+td.positive {
+    color: green;
+}
+
+.details td:first-child {
+    width: 200px;
+}
+
+
