@@ -213,13 +213,37 @@ test('visiting /topics', function() {
 });
 
 test('topics renders', function() {
-    expect(3);
+    expect(5);
 
     visit('/');
 
     andThen(function() {
-        ok(exists('#header'));
-        ok(exists('#word-cloud'));
-        ok(exists('#topic-details'));
+        ok(exists('#div-header'));
+        ok(exists('#div-word-cloud'));
+        ok(exists('#div-topic-details'));
+        ok(exists('#word-cloud-topics'));
+        ok(exists('#table-topic-details'));
     });
 });
+
+test('show all words', function() {
+    visit('/');
+
+    andThen(function() {
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(1)').text(), 'Berlin');
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(2)').text(),'Ostgut Ton');
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(3)').text(),'DJ');
+    });
+});
+
+test('click word', function() {
+    visit('/');
+
+    andThen(function() {
+        click('#word-cloud-topics :first :nth-child(1)').then(function(){
+            ok( true, "word was clicked!" );
+        });
+    });
+});
+
+
