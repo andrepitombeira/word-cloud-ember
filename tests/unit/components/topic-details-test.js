@@ -1,4 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
+import Ember from 'ember';
 
 moduleForComponent('topic-details', 'TopicDetailsComponent', {
   // specify the other units that are required for this test
@@ -16,3 +17,9 @@ test('it renders', function() {
   this.append();
   equal(component.state, 'inDOM');
 });
+
+test("show table", function() {
+    ok(this.subject() instanceof Ember.Component);
+    ok(this.$().find(':first-child').is('table'), 'is a table');
+});
+
