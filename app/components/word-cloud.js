@@ -47,12 +47,8 @@ export default Ember.Component.extend({
                 })
                 .text(function(d) { return d.text; })
                 .on("click", function(d) {
-                    handleClick(d);
+                    that.get('topicsController').send('setTopic', d);
                 });
-        }
-
-        function handleClick(topic) {
-            that.get('topicsController').send('setTopic', topic);
         }
     },
 
