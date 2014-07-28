@@ -6,7 +6,7 @@ export default Ember.ArrayController.extend({
 
     topic: function() {
         return this.get('selectedTopic');
-    }.property('selectedTopic.text'),
+    }.property('selectedTopic'),
 
     generateTopics: function() {
         var topics = this.get('content.content');
