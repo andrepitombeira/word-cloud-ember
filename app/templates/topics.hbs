@@ -1,14 +1,14 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" id="header">
             <h1>My Topics Challenge</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8" id="word-cloud">
             {{word-cloud data=topics topicsController=controller}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" id="topic-details">
             {{topic-details topic=topic}}
         </div>
     </div>
