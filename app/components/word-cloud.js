@@ -9,15 +9,26 @@ export default Ember.Component.extend({
 
     generateWordCloud: function() {
         var that = this,
-            maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
-            wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]),
-            topics = this.get('data').map(function(topic) {
-                return { text: topic.label,
-                    size: wordScale(topic.sentimentScore),
-                    sentimentScore: topic.sentimentScore,
-                    volume: topic.volume,
-                    sentiment: topic.sentiment };
-            });
+            topics = this.get('data'),
+            maxScore,
+            wordScale;
+
+
+        if (!topics || _.isEmpty(topics)) {
+            return;
+        }
+
+        maxScore = _.max(topics, function(topic) { return topic.sentimentScore; }).sentimentScore;
+        wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]);
+
+        topics = topics.map(function(topic) {
+            return { text: topic.label,
+                     size: wordScale(topic.sentimentScore),
+                     sentimentScore: topic.sentimentScore,
+                     volume: topic.volume,
+                     sentiment: topic.sentiment
+                  };
+        });
 
         d3.layout.cloud()
             .size([600, 600])
