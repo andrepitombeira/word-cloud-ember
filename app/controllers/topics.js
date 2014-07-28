@@ -35,7 +35,7 @@ export default Ember.ArrayController.extend({
     }.property('@each.label', '@each.sentimentScore', '@each.volume', '@each.sentiment'),
 
     actions: {
-        setTopic: function(topic) {
+        setSelectedTopic: function(topic) {
             this.set('selectedTopic', topic);
         }
     }
