@@ -1,4 +1,5 @@
 import { test, moduleForComponent } from 'ember-qunit';
+import Ember from 'ember';
 
 moduleForComponent('word-cloud', 'WordCloudComponent', {
   // specify the other units that are required for this test
@@ -16,3 +17,6 @@ test('it renders', function() {
   this.append();
   equal(component.state, 'inDOM');
 });
+
+
+
