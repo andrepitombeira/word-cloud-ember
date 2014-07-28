@@ -40,7 +40,7 @@ export default Ember.Component.extend({
                 .enter().append("text")
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Impact")
-                .style("fill", function(d) { return getColorBySentiment(d.sentimentScore); })
+                .style("fill", function(d) { return that.getColorBySentiment(d.sentimentScore); })
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
@@ -51,18 +51,18 @@ export default Ember.Component.extend({
                 });
         }
 
-        function getColorBySentiment(sentiment) {
-            if (sentiment > 60) {
-                return "green";
-            } else if (sentiment < 40) {
-                return "red";
-            } else {
-                return "gray";
-            }
-        }
-
         function handleClick(topic) {
             that.get('topicsController').send('setTopic', topic);
+        }
+    },
+
+    getColorBySentiment: function(sentiment) {
+        if (sentiment > 60) {
+            return "green";
+        } else if (sentiment < 40) {
+            return "red";
+        } else {
+            return "gray";
         }
     }
 });
