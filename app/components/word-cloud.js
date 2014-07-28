@@ -11,7 +11,7 @@ export default Ember.Component.extend({
         var that = this,
             maxScore = _.max(this.get('data'), function(topic) { return topic.sentimentScore; }).sentimentScore,
             wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]),
-            data = this.get('data').map(function(topic) {
+            topics = this.get('data').map(function(topic) {
                 return { text: topic.label,
                     size: wordScale(topic.sentimentScore),
                     sentimentScore: topic.sentimentScore,
@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
         d3.layout.cloud()
             .size([600, 600])
-            .words(data)
+            .words(topics)
             .padding(2)
             .rotate(function() { return ~~(Math.random() * 2) * 90; })
             .font("Impact")
