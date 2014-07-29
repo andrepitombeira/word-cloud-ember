@@ -82,7 +82,7 @@ export default Ember.Component.extend({
     },
 
     /**
-     * Get color according of sentiment score
+     * Get color according to sentiment score
      * @method getColorBySentiment
      * @param sentiment score
      * @returns {string} color
