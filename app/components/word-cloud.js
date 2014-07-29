@@ -85,13 +85,13 @@ export default Ember.Component.extend({
     /**
      * Get color according of sentiment score
      * @method getColorBySentiment
-     * @param sentiment
+     * @param sentiment score
      * @returns {string} color
      */
-    getColorBySentiment: function(sentiment) {
-        if (sentiment > 60) {
+    getColorBySentiment: function(sentimentScore) {
+        if (sentimentScore > 60) {
             return "green";
-        } else if (sentiment < 40) {
+        } else if (sentimentScore < 40) {
             return "red";
         } else {
             return "gray";
