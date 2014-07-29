@@ -19,7 +19,7 @@ This README outlines the details of collaborating on this Ember application.
 
 ## Running Tests
 
-* `ember test`
+* http://localhost:4200/tests
 * `ember test --server`
 
 ## Building
