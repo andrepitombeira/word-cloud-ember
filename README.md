@@ -38,3 +38,5 @@ If you using Sublime 3 simply remove these directories from the folders ST3 watc
 
 * `Sublime Text -> Preferences -> Settings -User `
 
+More information on http://www.ember-cli.com/#commonissues
+
