@@ -4,6 +4,10 @@ This README outlines the details of collaborating on this Ember application.
 
 ## Installation
 
+* intall node
+* npm install -g ember-cli
+* npm install -g bower
+* npm install -g yuidocjs
 * `git clone` this repository
 * `npm install`
 * `bower install`
@@ -22,4 +26,15 @@ This README outlines the details of collaborating on this Ember application.
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
+## Generate documentation
+
+* `yuidoc /app`
+
+## Information
+
+ember-cli by default will try to index all files in your tmp directory. This will cause your computer be slow. So simply exclude this folder from indexing in your IDE.
+
+If you using Sublime 3 simply remove these directories from the folders ST3 watches:
+
+* `Sublime Text -> Preferences -> Settings -User `
+
