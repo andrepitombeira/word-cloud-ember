@@ -79,7 +79,7 @@ test('topics renders', function() {
     });
 });
 
-test('show all words', function() {
+test('show all words in word cloud', function() {
     visit('/');
 
     andThen(function() {
@@ -89,7 +89,7 @@ test('show all words', function() {
     });
 });
 
-test('click word', function() {
+test('click on a word', function() {
     visit('/');
 
     andThen(function() {

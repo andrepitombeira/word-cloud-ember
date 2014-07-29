@@ -1,7 +1,7 @@
 import { test, moduleFor } from 'ember-qunit';
 import Ember from 'ember';
 
-moduleFor('route:topics', 'TopicsRoute', {
+moduleFor('route:topics', 'Unit - TopicsRoute', {
     subject: function(options, factory) {
         return factory.create({
             store: { }
@@ -17,7 +17,7 @@ test('it exists', function() {
     ok(route instanceof Ember.Route);
 });
 
-test('#model', function() {
+test('get model', function() {
     expect(2);
     var route = this.subject();
 

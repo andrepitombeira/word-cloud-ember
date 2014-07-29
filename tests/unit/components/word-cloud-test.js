@@ -1,12 +1,9 @@
 import { test, moduleForComponent } from 'ember-qunit';
 import Ember from 'ember';
 
-moduleForComponent('word-cloud', 'WordCloudComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
-});
+moduleForComponent('word-cloud', 'Unit - WordCloudComponent');
 
-test('it renders', function() {
+test('render word cloud component', function() {
   expect(2);
 
   // creates the component instance

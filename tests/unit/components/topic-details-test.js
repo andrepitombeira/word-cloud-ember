@@ -1,12 +1,9 @@
 import { test, moduleForComponent } from 'ember-qunit';
 import Ember from 'ember';
 
-moduleForComponent('topic-details', 'TopicDetailsComponent', {
-  // specify the other units that are required for this test
-  // needs: ['component:foo', 'helper:bar']
-});
+moduleForComponent('topic-details', 'Unit - TopicDetailsComponent');
 
-test('it renders', function() {
+test('render topic details component', function() {
   expect(2);
 
   // creates the component instance
@@ -18,7 +15,7 @@ test('it renders', function() {
   equal(component.state, 'inDOM');
 });
 
-test("show table", function() {
+test("show topic details table", function() {
     ok(this.subject() instanceof Ember.Component);
     ok(this.$().find(':first-child').is('table'), 'is a table');
 });
