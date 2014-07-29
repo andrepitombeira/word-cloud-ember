@@ -1,12 +1,24 @@
 /* global d3:true*/ /* global _:true */
 import Ember from 'ember';
 
+/**
+ * Component generate a word cloud
+ * @class WordCloudComponent
+ */
 export default Ember.Component.extend({
 
+    /**
+     * Generate a word cloud when render the component
+     * @method didInsertElement
+     */
     didInsertElement: function() {
         Ember.run.once(this, 'generateWordCloud');
     },
 
+    /**
+     * Generate a word cloud. Get topics passed to component and use the D3 library to generate the word cloud with these topics.
+     * @method generateWordCloud
+     */
     generateWordCloud: function() {
         var that = this,
             topics = this.get('data'),
@@ -18,9 +30,12 @@ export default Ember.Component.extend({
             return;
         }
 
+        //Get the topic with maximum sentiment score
         maxScore = _.max(topics, function(topic) { return topic.sentimentScore; }).sentimentScore;
+        //Create one scale for calculate the size of words based on its sentiment score
         wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]);
 
+        //Map topics in order to get only some attributes
         topics = topics.map(function(topic) {
             return { text: topic.label,
                      size: wordScale(topic.sentimentScore),
@@ -30,6 +45,7 @@ export default Ember.Component.extend({
                   };
         });
 
+        //Config word cloud
         d3.layout.cloud()
             .size([600, 600])
             .words(topics)
@@ -40,6 +56,7 @@ export default Ember.Component.extend({
             .on("end", draw)
             .start();
 
+        //Render word cloud
         function draw(words) {
             d3.select("body .col-md-8")
                 .append("svg")
@@ -65,6 +82,12 @@ export default Ember.Component.extend({
         }
     },
 
+    /**
+     * Get color according of sentiment score
+     * @method getColorBySentiment
+     * @param sentiment
+     * @returns {string} color
+     */
     getColorBySentiment: function(sentiment) {
         if (sentiment > 60) {
             return "green";
