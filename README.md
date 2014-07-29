@@ -4,7 +4,7 @@ This README outlines the details of collaborating on this Ember application.
 
 ## Installation
 
-* intall node
+* install node
 * npm install -g ember-cli
 * npm install -g bower
 * npm install -g yuidocjs
