@@ -1,5 +1,9 @@
 import DS from 'ember-data';
 
+/**
+ * Model for topic
+ * @class TopicModel
+ */
 var Topic = DS.Model.extend({
   label: DS.attr(),
   volume: DS.attr(),
@@ -12,6 +16,9 @@ var Topic = DS.Model.extend({
   queries: DS.attr()
 });
 
+/**
+ * Add fixtures
+ */
 Topic.reopenClass({
     FIXTURES: [
         {
