@@ -37,7 +37,7 @@ export default Ember.ArrayController.extend({
     },
 
     /**
-     * Topics load from fixtures
+     * Topics loaded from fixtures
      * @property topics
      * @type {Object} Returns topics
      */
