@@ -9,7 +9,7 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
  * @class Application
  */
 var App = Ember.Application.extend({
-  modulePrefix: 'word-cloud-ember', 
+  modulePrefix: 'word-cloud-ember',
   Resolver: Resolver
 });
 
