@@ -25,7 +25,6 @@ export default Ember.Component.extend({
             maxScore,
             wordScale;
 
-
         if (!topics || _.isEmpty(topics)) {
             return;
         }
