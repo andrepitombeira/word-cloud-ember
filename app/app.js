@@ -5,7 +5,7 @@ import loadInitializers from 'ember/load-initializers';
 Ember.MODEL_FACTORY_INJECTIONS = true;
 
 /**
- * Create application
+ * Application entry point. Create an ember application
  * @class Application
  */
 var App = Ember.Application.extend({

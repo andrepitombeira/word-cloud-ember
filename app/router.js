@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 /**
- * Create application router
+ * Application router
  * @class Router
  */
 var Router = Ember.Router.extend({
