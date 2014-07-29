@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 /**
  * This class is responsible for handling topics model
- * @class Topics controller
+ * @class TopicsController
  */
 export default Ember.ArrayController.extend({
     selectedTopic: null,
