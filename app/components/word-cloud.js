@@ -31,7 +31,7 @@ export default Ember.Component.extend({
 
         //Get the topic with maximum sentiment score
         maxScore = _.max(topics, function(topic) { return topic.sentimentScore; }).sentimentScore;
-        //Create one scale for calculate the size of words based on its sentiment score
+        //Create one scale linear for calculate words size based on its sentiment score
         wordScale = d3.scale.linear().domain([0, maxScore]).range([0, 100, 200, 300, 400, 500]);
 
         //Map topics in order to get only some attributes
