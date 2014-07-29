@@ -3,7 +3,6 @@ import Ember from 'ember';
 /**
  * Create application router
  * @class Router
- * @type {*|extend|void|Object|extend|extend}
  */
 var Router = Ember.Router.extend({
   location: WordCloudEmberENV.locationType
