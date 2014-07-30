@@ -22,26 +22,25 @@ module('Acceptance: Topics', {
                     "sentimentScore": 65
                 },
                 {
-                    "id": "1751295897__DJ",
-                    "label": "DJ",
+                    "id": "1751295897__Hammered",
+                    "label": "Hammered",
                     "volume": 48,
                     "type": "topic",
                     "sentiment": {
-                        "neutral": 46,
-                        "positive": 2
+                        "neutral": 18,
+                        "negative": 30
                     },
-                    "sentimentScore": 54
+                    "sentimentScore": 20
                 },
                 {
-                    "id": "1751295897__Ostgut Ton",
-                    "label": "Ostgut Ton",
-                    "volume": 24,
+                    "id": "1751295897__Barcelona",
+                    "label": "Barcelona",
+                    "volume": 7,
                     "type": "topic",
                     "sentiment": {
-                        "neutral": 22,
-                        "positive": 2
+                        "neutral": 7
                     },
-                    "sentimentScore": 58
+                    "sentimentScore": 50
                 }
             ]});
 
@@ -57,7 +56,7 @@ function exists(selector) {
     return !!window.find(selector).length;
 }
 
-test('visiting /topics', function() {
+test('should visiting /topics', function() {
   visit('/');
 
   andThen(function() {
@@ -65,7 +64,7 @@ test('visiting /topics', function() {
   });
 });
 
-test('topics renders', function() {
+test('should render', function() {
     expect(5);
 
     visit('/');
@@ -79,23 +78,47 @@ test('topics renders', function() {
     });
 });
 
-test('show all words in word cloud', function() {
+test('should show all words', function() {
     visit('/');
 
     andThen(function() {
         equal(find('#word-cloud-topics').children(":first").find(':nth-child(1)').text(), 'Berlin');
-        equal(find('#word-cloud-topics').children(":first").find(':nth-child(2)').text(),'Ostgut Ton');
-        equal(find('#word-cloud-topics').children(":first").find(':nth-child(3)').text(),'DJ');
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(2)').text(),'Barcelona');
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(3)').text(),'Hammered');
     });
 });
 
-test('click on a word', function() {
+test('should click on a word', function() {
     visit('/');
 
     andThen(function() {
         click('#word-cloud-topics :first :nth-child(1)').then(function(){
             ok( true, "word was clicked!" );
         });
+    });
+});
+
+test('word should have green color', function() {
+    visit('/');
+
+    andThen(function() {
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(1)').css("fill"), 'rgb(0, 128, 0)');
+    });
+});
+
+test('word should have gray color', function() {
+    visit('/');
+
+    andThen(function() {
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(2)').css("fill"), 'rgb(128, 128, 128)');
+    });
+});
+
+test('word should have red color', function() {
+    visit('/');
+
+    andThen(function() {
+        equal(find('#word-cloud-topics').children(":first").find(':nth-child(3)').css("fill"), 'rgb(255, 0, 0)');
     });
 });
 
